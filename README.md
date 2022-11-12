@@ -35,6 +35,14 @@ Currently it assumes there is only two containers in the common container and it
 picks the other one. So technically there is a option missing between level and
 swapee.
 
+## Usage as Shortcuts
+You probably want this to be triggered by a shortcut. The configuration for it
+in i3 could look something like this:
+```i3
+bindsym $mod+m       exec --no-startup-id ~/.local/bin/i3-swap/i3swap.py
+bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/i3swap.py --swapee last
+```
+
 ## Disclaimer
 I know this is a horrible name.
 I just wrote this for myself but feel free to report any issues you encounter.
