@@ -88,7 +88,7 @@ def find_swapee(
     if swapee == "last":
         swapee_index = -1
 
-    # we found the focused half, now we need to decent into it
+    # we found the focused neighbor, now we need to decent into it
     # to find the swapee (first container we find)
     while len(swapee_neighbor.nodes) > 0:
         swapee_neighbor = swapee_neighbor.nodes[swapee_index]
