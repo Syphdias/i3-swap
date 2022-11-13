@@ -19,6 +19,7 @@ def find_swapee(
     focused_container: Con,
     layout: Literal["horizontal", "vertical"],
     level: Literal["highest", "lowest"],
+    neighbor: Literal["first", "last"],
     swapee: Literal["first", "last"],
     verbose: int = 0,
 ) -> Optional[Con]:
@@ -73,25 +74,30 @@ def find_swapee(
     if not common_parent:
         common_parent = focused_half.parent
 
+    # we found the current parent, now we need to select a not focused neighbor
+
+    # pick either the first (default) or the last neighbor
+    neighbor_index = 0
+    if neighbor == "last":
+        neighbor_index = -1
+
+    swapee_neighbor = [node for node in common_parent.nodes if node != focused_half][0]
+
     # pick either the first (default) or the last container in the swapee half
     swapee_index = 0
     if swapee == "last":
         swapee_index = -1
 
-    # we found the current parent now we need to decent into it
+    # we found the focused half, now we need to decent into it
     # to find the swapee (first container we find)
-    swapee_half = next(
-        (node for node in common_parent.nodes if node != focused_half),
-        None,
-    )
-    while len(swapee_half.nodes) > 0:
-        swapee_half = swapee_half.nodes[swapee_index]
-    swapee = swapee_half
+    while len(swapee_neighbor.nodes) > 0:
+        swapee_neighbor = swapee_neighbor.nodes[swapee_index]
+    swapee = swapee_neighbor
 
     if verbose >= 2:
         print("common parent:", common_parent.id)
         print("  focused half:", focused_half.id)
-        print("  swapee half:", swapee_half.id)
+        print("  swapee half:", swapee_neighbor.id)
         print("    swapee:", swapee.id)
 
     return swapee
@@ -106,6 +112,7 @@ def main(args) -> None:
         focused_container,
         layout=args.layout,
         level=args.level,
+        neighbor=args.neighbor,
         swapee=args.swapee,
         verbose=args.verbose,
     )
@@ -134,6 +141,12 @@ if __name__ == "__main__":
         default="highest",
         choices=["highest", "lowest"],
         help="Select which hierarchy level you want swap with",
+    )
+    parser.add_argument(
+        "--neighbor",
+        default="first",
+        choices=["first", "last"],
+        help="Take first or last to select the neighbor to swap with",
     )
     parser.add_argument(
         "--swapee",

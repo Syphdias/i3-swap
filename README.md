@@ -21,19 +21,23 @@ split.
 The is no middle ground. If you have a suggestion how and how it would be
 useful, let me know.
 
+### Neighbor
+In the case of only two containers in the parent container, it knows which one
+to swap with. If there is more than two containers it takes the first. You can
+pick `--neighbor last`, if you prefer.
+
+Like with the level option. There is no middle ground. But again, if you know
+how it could be done and how it would be useful, let me know.
+
 ### Swapee
 By default the first container in the "other half" will be picked. With the
 level option we found a common container. Now we need to look at the other half
 and pick a candidate for swaping – the swapee. You can also pick the `--swapee
 last`, if you prefer.
 
-Like with the level option. There is no middle ground. But again, if you know
-how it could be done and how it would be useful, let me know.
+Like with the level and neighbor option. There is no middle ground. But again,
+if you know how it could be done and how it would be useful, let me know.
 
-### Non-existent option
-Currently it assumes there is only two containers in the common container and it
-picks the other one. So technically there is a option missing between level and
-swapee.
 
 ## Usage as Shortcuts
 You probably want this to be triggered by a shortcut. The configuration for it
