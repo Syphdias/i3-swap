@@ -81,7 +81,9 @@ def find_swapee(
     if neighbor == "last":
         neighbor_index = -1
 
-    swapee_neighbor = [node for node in common_parent.nodes if node != focused_half][0]
+    swapee_neighbor = [node for node in common_parent.nodes if node != focused_half][
+        neighbor_index
+    ]
 
     # pick either the first (default) or the last container in the swapee half
     swapee_index = 0
