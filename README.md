@@ -1,9 +1,20 @@
 ## About
 This swaps two containers/windows in an i3 workspace: The focused container and
 another one, depending on the picked options.
-Probably works on sway as well.
+Probably works on sway as well – no guarantees.
 
-## Options
+- Documentation (and FAQ – if any) can be found in this README.
+- There is currently no package to install the script.
+  You need to download it from [here](
+  https://raw.githubusercontent.com/Syphdias/i3-swap/main/i3swap.py)
+  or clone the repository.
+- Feel free to file issues to report bugs, ask questions,
+  or request features.
+- Feel free to open a pull request. Please use the [black](
+  https://github.com/psf/black) code formatter.
+
+
+## Usage and Options
 In one picture:
 
 ![](assets/selection-visualization.png)
@@ -49,4 +60,4 @@ bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/i3swap.py --swapee last
 
 ## Disclaimer
 I know this is a horrible name.
-I just wrote this for myself but feel free to report any issues you encounter.
+I just wrote this for myself, but feel free to report any issues you encounter.
