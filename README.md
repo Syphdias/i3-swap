@@ -14,6 +14,12 @@ Probably works on sway as well – no guarantees.
   https://github.com/psf/black) code formatter.
 
 
+## Requirements
+```
+pip install --user -r requirements.txt
+```
+
+
 ## Usage and Options
 In one picture:
 
